@@ -1,5 +1,5 @@
 using UnityEngine;
-using System; // Required for using Actions (Events)
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
