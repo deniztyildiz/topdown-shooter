@@ -7,8 +7,6 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 10;
     private int currentHealth;
 
-    // We use a static event to broadcast that health has changed.
-    // This is a clean way to let the UI update without a direct link.
     public static event Action<int, int> OnHealthChanged;
 
     void Start()
@@ -34,7 +32,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        // Here you would handle player death (e.g., play an animation, show a "Game Over" screen)
         Debug.Log("Player has died!");
     }
 }
