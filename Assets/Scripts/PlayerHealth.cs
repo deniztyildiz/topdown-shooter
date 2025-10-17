@@ -1,5 +1,5 @@
 using UnityEngine;
-using System; // Required for using Actions (Events)
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,7 +8,6 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
 
     // We use a static event to broadcast that health has changed.
-    // This is a clean way to let the UI update without a direct link.
     public static event Action<int, int> OnHealthChanged;
 
     void Start()
@@ -21,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
         // Prevent health from going below zero
         currentHealth = Mathf.Max(currentHealth - damage, 0);
 
-        // Broadcast the event to any listeners (like our health bar)
+        // Broadcast the event to any listeners
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         Debug.Log($"Player health: {currentHealth}/{maxHealth}");
@@ -34,7 +33,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-        // Here you would handle player death (e.g., play an animation, show a "Game Over" screen)
         Debug.Log("Player has died!");
     }
 }

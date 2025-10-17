@@ -18,7 +18,6 @@ public class PlayerBounds : MonoBehaviour
         SpriteRenderer playerSprite = GetComponent<SpriteRenderer>();
         if (playerSprite != null)
         {
-            // bounds.extents gives you half of the sprite's width and height.
             playerHalfWidth = playerSprite.bounds.extents.x;
             playerHalfHeight = playerSprite.bounds.extents.y;
         }
@@ -28,7 +27,7 @@ public class PlayerBounds : MonoBehaviour
         }
     }
 
-    // LateUpdate runs after all other Update calls, which is ideal for camera-related logic.
+
     void LateUpdate()
     {
         // Calculate the camera's dimensions in world units.

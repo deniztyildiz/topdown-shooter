@@ -38,8 +38,6 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        // --- THIS IS THE CHANGED LOGIC ---
-
         // 1. Pick a random X and Y coordinate within the screen's viewport.
         // The viewport's coordinates go from (0,0) at the bottom-left to (1,1) at the top-right.
         float randomX = Random.value; // Random.value returns a float between 0.0 and 1.0
