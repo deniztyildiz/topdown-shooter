@@ -1,4 +1,4 @@
-// You must add this line to use SceneManager
+
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
