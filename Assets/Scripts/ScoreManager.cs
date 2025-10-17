@@ -17,7 +17,6 @@ public static class ScoreManager
         OnScoreChanged?.Invoke(enemiesKilled);
     }
 
-    // A helper function to reset the score, e.g., when starting a new game.
     public static void ResetScore()
     {
         enemiesKilled = 0;
