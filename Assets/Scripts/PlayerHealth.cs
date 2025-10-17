@@ -4,7 +4,7 @@ using System; // Required for using Actions (Events)
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
-    public int maxHealth = 100;
+    public int maxHealth = 10;
     private int currentHealth;
 
     // We use a static event to broadcast that health has changed.
@@ -32,11 +32,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         // Here you would handle player death (e.g., play an animation, show a "Game Over" screen)
         Debug.Log("Player has died!");
-        // For now, we can just destroy the player object
-        Destroy(gameObject);
     }
 }
