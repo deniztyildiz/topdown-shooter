@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
 
     // We use a static event to broadcast that health has changed.
+    // This is a clean way to let the UI update without a direct link.
     public static event Action<int, int> OnHealthChanged;
 
     void Start()

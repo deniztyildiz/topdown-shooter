@@ -35,6 +35,8 @@ public class PlayerShooting : MonoBehaviour
         rb.rotation = angle;
 
 
+        // --- Shooting Logic (THIS LINE IS CHANGED) ---
+        // Check for the Space key press instead of the mouse button.
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
