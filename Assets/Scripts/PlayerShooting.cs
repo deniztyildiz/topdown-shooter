@@ -14,7 +14,7 @@ public class PlayerShooting : MonoBehaviour
 
     [Header("Shooting Settings")]
     [SerializeField]
-    private float bulletForce = 20f;
+    private float bulletForce = 20f * UpgradeData.bulletUpgradeCoefficient;
 
     // --- Private Variables ---
     private Camera mainCamera;
@@ -34,13 +34,14 @@ public class PlayerShooting : MonoBehaviour
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
 
-
-        // --- Shooting Logic (THIS LINE IS CHANGED) ---
-        // Check for the Space key press instead of the mouse button.
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log($"bullet Upgrade Coefficient is {UpgradeData.bulletUpgradeCoefficient}");
+            if (bulletForce == 20)
+            {
+            bulletForce *= UpgradeData.bulletUpgradeCoefficient;
+            }
             Shoot();
-            Debug.Log("Bullet shooted");
         }
     }
 
@@ -48,7 +49,6 @@ public class PlayerShooting : MonoBehaviour
     {
         if (bulletPrefab == null || firePoint == null)
         {
-            Debug.LogError("Bullet Prefab or Fire Point is not set!");
             return;
         }
 

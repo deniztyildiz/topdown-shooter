@@ -4,15 +4,13 @@ using System;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField]
-    public int maxHealth = 10;
+    private int maxHealth;
     private int currentHealth;
-
-    // We use a static event to broadcast that health has changed.
-    // This is a clean way to let the UI update without a direct link.
     public static event Action<int, int> OnHealthChanged;
 
-    void Start()
+    void Awake()
     {
+        maxHealth = 1000;
         currentHealth = maxHealth;
     }
 
@@ -24,12 +22,15 @@ public class PlayerHealth : MonoBehaviour
         // Broadcast the event to any listeners
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
-        Debug.Log($"Player health: {currentHealth}/{maxHealth}");
-
         if (currentHealth <= 0)
         {
             Die();
         }
+    }
+
+    public void Heal(int healingAmount)
+    {
+        currentHealth += healingAmount;
     }
 
     public void Die()
