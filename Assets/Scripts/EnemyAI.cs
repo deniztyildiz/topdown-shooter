@@ -7,6 +7,8 @@ public class EnemyAI : MonoBehaviour
     private float moveSpeed = 3f;
     [SerializeField]
     private int collisionDamage = 10; // How much damage the enemy deals on contact.
+    private GameObject player;
+    private PlayerHealth playerHealthScript;
 
     [Header("Effects")]
     [SerializeField]
@@ -17,8 +19,9 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerHealthScript = player.GetComponent<PlayerHealth>();
         rb = GetComponent<Rigidbody2D>();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerTransform = player.transform;
@@ -34,7 +37,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void EnemyTakeDamage(int damage)
     {
         if (hitEffectPrefab != null)
         {
@@ -56,6 +59,12 @@ public class EnemyAI : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        GameObject collidedObject = collision.gameObject;
+        if(collidedObject == player)
+        {
+            playerHealthScript.TakeDamage(collisionDamage);
+        }
         Die();
+
     }
 }

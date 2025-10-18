@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake()
     {
-        maxHealth = 1000;
+        maxHealth = 100;
         currentHealth = maxHealth;
     }
 
@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     {
         // Prevent health from going below zero
         currentHealth = Mathf.Max(currentHealth - damage, 0);
+        Debug.Log($"Player health is {currentHealth}");
 
         // Broadcast the event to any listeners
         OnHealthChanged?.Invoke(currentHealth, maxHealth);

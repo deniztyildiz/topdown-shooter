@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         if (enemy != null)
         {
             // If it hits an enemy, deal damage.
-            enemy.TakeDamage(damage);
+            enemy.EnemyTakeDamage(damage);
         }
 
         // Destroy the bullet as soon as it hits any object with a collider.
